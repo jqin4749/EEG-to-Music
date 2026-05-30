@@ -1,0 +1,37 @@
+group_name: "eeg_music_pretrain"
+data_path: "/home/users/NMED"
+working_dir: "/home/users/eeg_music"
+
+encoder_emb_dim: 512
+encoder_patch_size: 50
+encoder_num_channels: 125
+encoder_channel_dropout: 0.0
+encoder_aligned_space_dim: 512
+encoder_num_heads: 16
+encoder_num_layers: 8
+eeg_window_size: 1000
+eeg_window_stride: 800
+
+num_global_views: 2
+num_local_views: 8
+crop_scale_global: [0.5, 1.0]
+crop_scale_local: [0.1, 0.5]
+learning_rate: 8e-5
+lr_scheduler: "cosine"
+lr_warmup_steps: 6000
+max_train_steps: 40000
+save_every_steps: 1000
+max_grad_norm: 1.0
+
+noise_level_global: 0.01
+noise_level_local: 0.03
+
+batch_size: 60
+val_batch_size: 10
+validation_steps: 1000
+
+seed: 622
+cache_dir: "./cache"
+gradient_accumulation_steps: 1
+mixed_precision: "bf16"
+resume_from_checkpoint: null # "/data/grad/qj020/eeg_music/results/eeg_music_pretrain/26-06-2025-13:08:11"

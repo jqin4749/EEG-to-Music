@@ -1,0 +1,39 @@
+group_name: "eeg_music_align"
+data_path: "/home/users/NMED"
+working_dir: "/home/users/eeg_music"
+
+# pretrain_model_path: "./results/eeg_music_pretrain/27-05-2025-20:39:35/pretrained"
+pretrain_model_path: "./results/eeg_music_pretrain/13-01-2026-19:36:08/pretrained" # 0.1
+# pretrain_model_path: "./results/eeg_music_pretrain/16-01-2026-02:12:25/pretrained" # 0.2
+# pretrain_model_path: "./results/eeg_music_pretrain/15-01-2026-22:22:59/pretrained" # 0.4
+# pretrain_model_path: "./results/eeg_music_pretrain/16-01-2026-08:50:40/pretrained" # 0.6
+# pretrain_model_path: "./results/labram_pretrain/16-01-2026-14:48:35/best" # labram
+# pretrain_model_path: "/home/users/eeg_music/results/eeg_music_pretrain/25-01-2026-20:48:42/pretrained" # 0.0
+
+eeg_window_size: 125
+eeg_window_stride: 125
+
+learning_rate: 1.2e-4
+lr_scheduler: "cosine"
+lr_warmup_steps: 8000
+max_train_steps: 30000
+save_every_steps: 1000
+max_grad_norm: 1.0
+
+crop_scale: [0.4, 1.0]
+noise_level: 0.05
+channel_dropout: 0.2
+
+batch_size: 500
+val_batch_size: 50
+validation_steps: 500
+
+seed: 622
+cache_dir: "./.cache"
+gradient_accumulation_steps: 1
+mixed_precision: "bf16"
+resume_from_checkpoint: null # "./results/eeg_music_align/27-06-2025-12:02:49"
+
+use_linear_model: true
+use_labram_model: false
+data_split_type: "default" # "default", "subject", "song_intra", "song_inter", "block"
